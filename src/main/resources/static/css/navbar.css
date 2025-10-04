@@ -1,0 +1,41 @@
+/* Estilos mejorados para el navbar dropdown */
+.dropdown-menu {
+    background-color: #ffffff !important;
+    border: 1px solid #dee2e6 !important;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    z-index: 1050 !important;
+}
+
+.dropdown-item {
+    color: #212529 !important;
+    background-color: transparent !important;
+    font-weight: 500;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: #1e2125 !important;
+    background-color: #e9ecef !important;
+}
+
+.dropdown-divider {
+    border-top: 1px solid #dee2e6 !important;
+    margin: 0.5rem 0;
+}
+
+/* Asegurar que el dropdown sea visible en todas las páginas */
+.navbar-nav .dropdown-menu {
+    position: absolute !important;
+    z-index: 1050 !important;
+}
+
+/* Mejorar el contraste del texto del dropdown en navbar oscuro */
+.navbar-dark .navbar-nav .dropdown-menu .dropdown-item {
+    color: #212529 !important;
+}
+
+.navbar-dark .navbar-nav .dropdown-menu .dropdown-item:hover,
+.navbar-dark .navbar-nav .dropdown-menu .dropdown-item:focus {
+    color: #1e2125 !important;
+    background-color: #e9ecef !important;
+}
