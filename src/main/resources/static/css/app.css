@@ -1,0 +1,24 @@
+:root {
+    --color-primario: #0d6efd;   /* azul bootstrap */
+    --color-secundario: #6c757d; /* gris */
+    --color-fondo: #f8f9fa;      /* fondo claro */
+    --color-texto: #212529;      /* texto oscuro */
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+.navbar {
+    background-color: #000000 !important;
+}
+
+.navbar a, .navbar-brand {
+    color: white !important;
+}
+
+.btn-custom {
+    background-color: var(--color-primario);
+    color: white;
+}

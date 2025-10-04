@@ -1,0 +1,52 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><title>Adivina la canción</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link th:href="@{/css/app.css}" rel="stylesheet"></head>
+<body>
+<header th:replace="~{fragments/navbar :: navbar}"></header>
+
+<div class="container mt-4">
+    <h1>Adivina la canción criolla</h1>
+
+    <div th:if="${msg}" class="alert alert-success" th:text="${msg}"></div>
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+    <div th:if="${sinAsignacion}">
+        <div class="alert alert-warning">
+            <h4>No tienes una canción asignada</h4>
+            <p>Necesitas que el administrador te asigne una canción para jugar.</p>
+            <form th:action="@{/juegos/cancion/solicitar}" method="post" class="d-inline">
+                <button type="submit" class="btn btn-primary">Solicitar asignación</button>
+            </form>
+            <a th:href="@{/dashboard}" class="btn btn-secondary ms-2">Volver</a>
+        </div>
+    </div>
+
+    <div th:if="${estado != null}" class="card">
+        <div class="card-body">
+            <p th:text="|Intentos: ${estado.intentos}|"></p>
+            <p th:if="${estado.adivinada}" class="text-success">¡Correcto!</p>
+            <p th:if="${!estado.adivinada}" th:text="|Letras correctas: ${estado.letrasCorrectas}|"></p>
+            <p th:if="${!estado.adivinada}" th:text="|Posiciones correctas: ${estado.posicionesCorrectas}|"></p>
+
+            <form th:if="${!estado.adivinada}" th:action="@{/juegos/cancion/intentar}" method="post" class="mb-3">
+                <div class="input-group">
+                    <input type="text" name="intento" class="form-control" placeholder="Escribe el título">
+                    <button type="submit" class="btn btn-primary">Intentar</button>
+                </div>
+            </form>
+
+            <div class="mt-3">
+                <a th:href="@{/juegos/cancion/ranking}" class="btn btn-info">Ver ranking</a>
+                <a th:href="@{/dashboard}" class="btn btn-secondary">Volver</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
